@@ -25,8 +25,10 @@ import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import static java.lang.Thread.sleep;
@@ -234,10 +236,43 @@ public class ClassicPcap extends PApplet {
                                     } catch (InterruptedException ex) {
                                         Logger.getLogger(ClassicPcap.class.getName()).log(Level.SEVERE, null, ex);
                                     }
+                                    //WHOIS executable
+                                    //https://technet.microsoft.com/en-us/sysinternals/bb897435.aspx
                                 }
                                 catch(IOException ioe)
                                 {
                                     System.err.println("IOException: " + ioe.getMessage());
+                                }
+                                String s = null;
+
+                                try {
+
+                                // run the Unix "ps -ef" command
+                                    // using the Runtime exec method:
+                                    Process p = Runtime.getRuntime().exec("C:\\Users\\Micael\\Documents\\NetBeansProjects\\Main\\src\\main\\whois.exe -v "+iptest);
+
+                                    BufferedReader stdInput = new BufferedReader(new
+                                         InputStreamReader(p.getInputStream()));
+
+                                    BufferedReader stdError = new BufferedReader(new
+                                         InputStreamReader(p.getErrorStream()));
+
+                                    // read the output from the command
+                                    System.out.println("Here is the standard output of the command:\n");
+                                    while ((s = stdInput.readLine()) != null ) {
+                                        System.out.println(s);
+                                    }
+
+                                    // read any errors from the attempted command
+                                    System.out.println("Here is the standard error of the command (if any):\n");
+                                    while ((s = stdError.readLine()) != null) {
+                                        System.out.println(s);
+                                    }
+                                }
+                                catch (IOException e) {
+                                    System.out.println("exception happened - here's what I know: ");
+                                    e.printStackTrace();
+                                    System.exit(-1);
                                 }
                                 al.add(iptest+":"+c.getName());
                                 DrawMe(Double.parseDouble(temp[1]),Double.parseDouble(temp[2]));
