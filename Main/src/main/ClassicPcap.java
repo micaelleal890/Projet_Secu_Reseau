@@ -26,16 +26,11 @@ import de.fhpotsdam.unfolding.utils.MapUtils;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import static java.lang.Thread.sleep;
-import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
 import javax.naming.NamingEnumeration;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
@@ -45,10 +40,6 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import org.xbill.DNS.Name;
-import org.xbill.DNS.TextParseException;
-import org.xbill.DNS.ZoneTransferException;
-import org.xbill.DNS.ZoneTransferIn;
 
 public class ClassicPcap extends PApplet {  
   
@@ -59,6 +50,7 @@ public class ClassicPcap extends PApplet {
      *          ignored 
      */  
     public static UnfoldingMap map;
+    public static String mycurrentFolder ="C:\\Users\\Micael\\Documents\\NetBeansProjects\\Main\\src\\main\\";
     public static Integer monid=0;
     public static Double Latitude, Longitude;
     public static Boolean USIS=false, FRIS=false, RUIS=false, PTIS=false;
@@ -88,14 +80,14 @@ public class ClassicPcap extends PApplet {
     public static void main(String[] args) { 
         final JPanel panelShop = new JPanel();
         final JFrame monframe = new JFrame();
-	String fileName="C:/Users/Micael/Desktop/countries.txt";
+	String fileName=mycurrentFolder+"countries.txt";
 	CSVFileReader x=new CSVFileReader(fileName);
 	x.ReadFile();
         mylist=x.getFileValues();
         final ArrayList al = new ArrayList();
         try
         {
-                    String filename= "C:\\\\Users\\\\Micael\\\\Documents\\\\NetBeansProjects\\\\Main\\\\src\\\\main\\\\Logs.txt";
+                    String filename= mycurrentFolder+"Logs.txt";
                     FileWriter fw = new FileWriter(filename,true); //the true will append the new data
                     fw.write("Welcome...");//appends the string to the file
                     fw.write(System.lineSeparator());
@@ -180,7 +172,7 @@ public class ClassicPcap extends PApplet {
                     System.out.printf("Source IP::%s%n", FormatUtils.ip(ip.source()));
                 }
                 
-                File file = new File("D:/ip2c/ip-to-country.bin");
+                File file = new File(mycurrentFolder+"ip-to-country.bin");
                 //System.out.println(file.getAbsolutePath());
                 String iptest = FormatUtils.ip(ip.source()).toString();
                 String currentmodify ;
@@ -226,7 +218,7 @@ public class ClassicPcap extends PApplet {
                                  
                                 try
                                 {
-                                    String filename= "C:\\\\Users\\\\Micael\\\\Documents\\\\NetBeansProjects\\\\Main\\\\src\\\\main\\\\Logs.txt";
+                                    String filename= mycurrentFolder+"Logs.txt";
                                     FileWriter fw = new FileWriter(filename,true); //the true will append the new data
                                     fw.write(iptest+":"+c.getName());//appends the string to the file
                                     fw.write(System.lineSeparator());
@@ -249,7 +241,7 @@ public class ClassicPcap extends PApplet {
 
                                 // run the Unix "ps -ef" command
                                     // using the Runtime exec method:
-                                    Process p = Runtime.getRuntime().exec("C:\\Users\\Micael\\Documents\\NetBeansProjects\\Main\\src\\main\\whois.exe -v "+iptest);
+                                    Process p = Runtime.getRuntime().exec(mycurrentFolder+"whois.exe -v "+iptest);
 
                                     BufferedReader stdInput = new BufferedReader(new
                                          InputStreamReader(p.getInputStream()));
