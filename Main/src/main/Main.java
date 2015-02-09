@@ -49,7 +49,7 @@ public class Main {
 		/*
 		 * Example #1 open offline capture file for reading packets.
 		 */
-		final String FILENAME = "C:/Users/Micael/Desktop/mytest.pcap";
+		final String FILENAME = "C:\\Users\\Micael\\Documents\\NetBeansProjects\\Main\\src\\main\\mytest.pcap";
 		final StringBuilder errbuf = new StringBuilder();
 
 		final Pcap pcap = Pcap.openOffline(FILENAME, errbuf);

@@ -1,0 +1,30 @@
+
+Whois v1.12 - Domain information lookup utility
+Sysinternals - www.sysinternals.com
+Copyright (C) 2005-2014 Mark Russinovich
+
+Connecting to FR.whois-servers.net...
+Server FR.whois-servers.net returned the following for IP-146.NET-80-236-32.SURESNES.REV.NUMERICABLE.FR
+
+
+%%
+%% This is the AFNIC Whois server.
+%%
+%% complete date format : DD/MM/YYYY
+%% short date format    : DD/MM
+%% version              : FRNIC-2.5
+%%
+%% Rights restricted by copyright.
+%% See http://www.afnic.fr/afnic/web/mentions-legales-whois_en
+%%
+%% Use '-h' option to obtain more information about this service.
+%%
+%% [89.156.73.84 REQUEST] >> IP-146.NET-80-236-32.SURESNES.REV.NUMERICABLE.FR
+%%
+%% RL Net [##########] - RL IP [#########.]
+%%
+
+%% No entries found in the AFNIC Database.
+
+
+
